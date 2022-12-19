@@ -58,6 +58,8 @@ values
   (3, 1, 8), 
   (2, 5, 4), 
   (2, 3, 3);
+  
+  
 --  truy vấn dữ liệu ----------------------
 --  Hiển thị các thông tin  gồm oID, oDate, oPrice của tất cả các hóa đơn trong bảng Order
 select 
