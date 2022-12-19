@@ -1,12 +1,15 @@
 create database quan_ly_san_pham;
+
 use quan_ly_san_pham;
 -- tạo bảng customer
+
 create table customer (
   c_id int primary key auto_increment, 
   c_name varchar(45), 
   c_age int
 );
 -- tao bảng order
+
 create table `order` (
   c_id int, 
   o_id int primary key auto_increment, 
@@ -16,12 +19,14 @@ create table `order` (
   set 
     null
 );
+
 -- tạo bảng product
 create table product (
   p_id int primary key auto_increment, 
   p_name varchar(45), 
   p_price int
 );
+
 -- tạo bảng chung order_detail
 create table order_detail (
   o_id int, 
@@ -31,6 +36,7 @@ create table order_detail (
   foreign key(o_id) references `order` (o_id) ,
   foreign key(p_id) references `product` (p_id)
 );
+
 -- chèn dữ liệu  ----------- 
 insert into customer (c_name,c_age)
 values 
@@ -61,7 +67,7 @@ values
   
   
 --  truy vấn dữ liệu ----------------------
---  Hiển thị các thông tin  gồm oID, oDate, oPrice của tất cả các hóa đơn trong bảng Order
+-- 1  Hiển thị các thông tin  gồm oID, oDate, oPrice của tất cả các hóa đơn trong bảng Order
 
 select 
   o_id, 
@@ -69,7 +75,7 @@ select
   o_total_price 
 from 
   `order`;
--- Hiển thị danh sách các khách hàng đã mua hàng và danh sách sản phẩm được mua bởi các khách
+-- 2  Hiển thị danh sách các khách hàng đã mua hàng và danh sách sản phẩm được mua bởi các khách
 
 select 
   c.c_name, 
@@ -79,7 +85,7 @@ from
   join `order` o on c.c_id = o.c_id 
   join order_detail od on od.o_id = o.o_id 
   join product p on p.p_id = od.p_id;
---  Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
+-- 3  Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 
 select 
   c.c_id, 
@@ -94,7 +100,7 @@ where
     from 
       `order` o
   );
--- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn (giá một hóa đơn được tính bằng tổng giá bán
+-- 4 Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn (giá một hóa đơn được tính bằng tổng giá bán
 --  của từng loại mặt hàng xuất hiện trong hóa đơn. Giá bán của từng loại được tính = odQTY*pPrice)
 
 select 
