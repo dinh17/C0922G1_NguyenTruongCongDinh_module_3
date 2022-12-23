@@ -1,0 +1,44 @@
+span{
+    word-spacing: 10px;
+    /*khoảng cách giữa các chữ*/
+}
+body{
+
+    width: 690px;
+    /*độ rộng của khung*/
+    font-size: 100%;
+    font-family: sans-serif;
+    /*kiểu chữ */
+    font-style: normal;
+    /*kiểu chữ normal (không in nghiêng)*/
+    text-align:justify ;
+    /*văn bản được căn lề ở cả 2 bên */
+}
+p {
+    text-indent: 60px;
+}
+h1{
+    font-size : 300%;
+    font-family: Arrus-Black,serif;
+    font-weight:normal;
+    line-height: 0px;
+}
+h2{
+    font-weight:normal;
+    font-size:100%;
+
+}
+a {
+    /*text-decoration: none;*/
+    /*văn bản bình thường*/
+    text-decoration: blink;
+    /*văn bản nhấp nháy*/
+
+}
+a:hover{
+    color: crimson;
+}
+sup{
+    font-size :50%;
+    color:blue;
+}
