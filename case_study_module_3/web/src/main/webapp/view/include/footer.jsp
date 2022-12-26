@@ -8,9 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>footer</title>
+    <link rel="stylesheet" href="../bootstrap-5.1.3-dist\css\bootstrap.css">
 </head>
 <body>
-$END$
+
+<footer class="bg-light text-center text-lg-start">
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 :
+        <a class="text-dark" href="https://mdbootstrap.com/"></a>
+    </div>
+
+</footer>
+
+<script src="../bootstrap-5.1.3-dist\js\bootstrap.js"></script>
 </body>
 </html>

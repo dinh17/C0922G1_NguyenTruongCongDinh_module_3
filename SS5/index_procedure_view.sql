@@ -160,7 +160,7 @@ end // delimiter;
   1
 );
 
--- 4 Tạo store procedure xoá sản phẩm theo id
+-- 4 `	Tạo store procedure xoá sản phẩm theo id
 delimiter // 
 create procedure delete_product( p_id int)
  begin 
