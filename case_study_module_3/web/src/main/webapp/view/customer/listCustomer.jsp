@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
 </head>
-<body>
+<body >
 <div>
     <%--header--%>
     <c:import url="/view/include/header.jsp"></c:import>
@@ -25,7 +25,7 @@
 <a href="/customer?action=add" class="btn btn-outline-warning btn-outline-success m-2">Thêm mới</a>
 
 <h2 class="d-flex justify-content-center text-primary">Customer List</h2>
-<table class="table table-striped " id="tableCustomer">
+<table class="table table-striped " style="background: wheat" id="tableCustomer">
     <thead>
     <tr>
         <th>STT</th>
@@ -68,7 +68,7 @@
 
             <td>
                 <button onclick="infoDelete('${customer.getId()}','${customer.getName()}')" type="button"
-                        class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Delete
                 </button>
             </td>
