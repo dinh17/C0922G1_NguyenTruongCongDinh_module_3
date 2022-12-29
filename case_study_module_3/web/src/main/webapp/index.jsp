@@ -12,13 +12,8 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="../bootstrap-5.1.3-dist\css\bootstrap.css">
-
     <%--    <link rel="stylesheet" href="../bootstrap-5.1.3-dist\css\styleWeb.css">--%>
-
 </head>
-
-
-
 
 
 <%--  <c:redirect url="/view/customer/listCustomer.jsp"></c:redirect>--%>
@@ -28,18 +23,16 @@
 
 <%--body--%>
 
-
-
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" style="height: 800px">
-                <img src="picture/06-2.jpg" class="d-block w-100 h-100" alt="...">
+                <img src="picture/Vietnam_Danang_Furama_Resort_Exterior-Furama-girl-with-pink-hat.jpg" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item" style="height: 800px">
                 <img src="picture/DES-DANANG.jpg" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item" style="height: 800px">
-                <img src="picture/Vietnam_Danang_Furama_Resort_Exterior-Furama-girl-with-pink-hat.jpg" class="d-block w-100 h-100"
+                <img src="picture/06-2.jpg" class="d-block w-100 h-100"
                      alt="...">
             </div>
         </div>

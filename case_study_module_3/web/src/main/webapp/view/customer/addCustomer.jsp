@@ -14,6 +14,7 @@
 
     <%--    file bootstrap css --%>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/styleWeb.css.css">
 
 </head>
 <body>
@@ -98,7 +99,7 @@
             </div>
         </div>
 
-        <button type="submit" class="d-flex justify-content-center" style="margin: 0 auto">Save</button>
+        <button type="submit" class="d-flex justify-content-center button1 " style="margin: 0 auto">Save</button>
 </form>
 <div class="row">
     <%--    footer --%>

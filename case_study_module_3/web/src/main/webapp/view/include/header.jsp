@@ -10,6 +10,7 @@
 <head>
     <title>header</title>
     <link rel="stylesheet" href="../bootstrap-5.1.3-dist\css\bootstrap.css">
+
 </head>
 <body>
 <%--logo --%>
@@ -62,19 +63,18 @@
 <nav class="navbar navbar-expand-lg navbar-light  sticky" style="background: #046056">
     <div class="container-fluid">
 
-<%--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"--%>
-<%--                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">--%>
-<%--            <span class="navbar-toggler-icon"></span>--%>
-<%--        </button>--%>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
         </div>
 
-
-        <div class="col-md-4 ">
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="d-flex align-content-center">
+        <div class="d-flex col-md-6 justify-content-center ">
+           <div class="justify-content-sm-between">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex container-fluid">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
@@ -94,15 +94,13 @@
                     </ul>
                 </div>
             </div>
+           </div>
         </div>
-            <div class="col-md-4">
-
-            </div>
+        <div class="col-md-3">
 
         </div>
     </div>
 </nav>
-
 
 <script src="../bootstrap-5.1.3-dist\js\bootstrap.js"></script>
 </body>

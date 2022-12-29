@@ -19,7 +19,7 @@
 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#add">Thêm mới</button>
 
 <!-- Modal add -->
-<h2 class="d-flex justify-content-center text-primary">Service List</h2>
+
 <div class="modal fade" id="add" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
