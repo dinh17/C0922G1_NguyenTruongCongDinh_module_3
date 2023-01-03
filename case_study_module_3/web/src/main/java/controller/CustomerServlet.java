@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -32,15 +33,51 @@ public class CustomerServlet extends HttpServlet {
                 addCustomer(request, response);
                 break;
             case "delete":
-                deleteCustomer(request,response);
+                deleteCustomer(request, response);
                 break;
-            case "edit" :
-                editCustomer(request,response);
+            case "edit":
+                editCustomer(request, response);
                 break;
-
+            case "search":
+                searchCustomer(request, response);
+                break;
             default:
 
         }
+    }
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+        List<Customer> customerList = customerService.findCustomerByName(name,phoneNumber,address);
+        request.setAttribute("customerList", customerList);
+        String mess = "";
+        if (customerList.size() == 0) {
+            mess = "Không tìm thấy";
+        }
+        request.setAttribute("mess",mess);
+        try {
+            request.getRequestDispatcher("/view/customer/listCustomer.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+
+//        String name = request.getParameter("name");
+//        String phoneNumber = request.getParameter("phone_number");
+//        String address = request.getParameter("address");
+//        List<Customer> customerList = customerService.findCustomerByName(name, phoneNumber, address);
+//        request.setAttribute("customerList", customerList);
+//        String mess = "";
+//        if (customerList.size() == 0) {
+//            mess = "Không tìm thấy";
+//        }
+//        request.setAttribute("mess",mess);
+//        try {
+//            request.getRequestDispatcher("/view/customer/listCustomer.jsp").forward(request, response);
+//        } catch (ServletException | IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -60,7 +97,7 @@ public class CustomerServlet extends HttpServlet {
         if (check) {
             mess = "Cập nhật thành công";
         }
-        request.setAttribute("mess",mess);
+        request.setAttribute("mess", mess);
         displayListCustomer(request, response);
 
     }
@@ -72,7 +109,7 @@ public class CustomerServlet extends HttpServlet {
         if (check) {
             messDelete = "Xóa Thành công";
         }
-        request.setAttribute("messDelete",messDelete);
+        request.setAttribute("messDelete", messDelete);
         displayListCustomer(request, response);
     }
 

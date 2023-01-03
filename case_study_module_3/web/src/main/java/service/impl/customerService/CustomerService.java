@@ -28,4 +28,11 @@ public class CustomerService  implements ICustomerService {
     public boolean editCustomer(Customer customer) {
         return customerRepository.editCustomer(customer);
     }
+
+    @Override
+    public List<Customer> findCustomerByName(String customerName, String customerPhoneNumber, String customerAddress) {
+        return customerRepository.findCustomerByName(customerName,customerPhoneNumber,customerAddress);
+    }
+
+
 }

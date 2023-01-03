@@ -21,6 +21,13 @@
     <%--header--%>
     <c:import url="/view/include/header.jsp"></c:import>
 </div>
+<form class="d-flex" action="/customer?action=search" method="post">
+    <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search" name="name">
+    <input class="form-control me-2" type="search" placeholder="Search Phone Number" aria-label="Search"
+           name="phone_number">
+    <input class="form-control me-2" type="search" placeholder="Search Address" aria-label="Search" name="address">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <%-- mess --%>
 <h2 class="text-success">${mess}</h2>
 <h2 class="text-danger">${messDelete}</h2>
@@ -62,30 +69,11 @@
     </thead>
     <tbody>
     <c:forEach var="customer" items="${customerList}" varStatus="status">
-
             <tr class=" text-center ">
-
-
-
-                    <td>
-                            ${status.count}
-                    </td>
-
-
-
+                    <td>${status.count}</td>
                     <td>${customer.customerType.name}</td>
-
-
-
                     <td>${customer.name}</td>
-
-
-
-
                     <td>${customer.dateOfBirth}</td>
-
-
-
                     <c:if test="${customer.gender}">
 
                         <td>Nam</td>
@@ -93,25 +81,10 @@
                     <c:if test="${!customer.gender}">
                         <td>Nữ</td>
                     </c:if>
-
-
-
                     <td>${customer.idCard}</td>
-
-
-
                     <td>${customer.phoneNumber}</td>
-
-
-
                     <td>${customer.email}</td>
-
-
-
                     <td>${customer.address}</td>
-
-
-
                     <td>
                         <button onclick="infoEdit('${customer.getId()}','${customer.customerType.getId()}','${customer.getName()}','${customer.getDateOfBirth()}',
                                 '${customer.getIdCard()}','${customer.getPhoneNumber()}','${customer.getEmail()}','${customer.getAddress()}','${customer.isGender()}')"
@@ -121,10 +94,6 @@
                                  width="20">
                         </button>
                     </td>
-
-
-
-
                     <td>
                         <button onclick="infoDelete('${customer.getId()}','${customer.getName()}')" type="button"
                                 class=" button1 " data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -132,11 +101,8 @@
                                  height="25" width="20">
                         </button>
                     </td>
-
                 </div>
             </tr>
-
-
     </c:forEach>
 
     </tbody>
