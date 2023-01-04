@@ -24,10 +24,14 @@
     </style>
 </head>
 <body>
-
+<form class="d-flex" action="/user?action=search" method="post">
+    <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search" name="name">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <h1>User Management</h1>
 <h2><a href="/user?action=add">Add New User</a></h2>
-<h2> List Of User </h2>
+<h2><a href="/user">List Of User</a>  </h2>
+<h2>${mess}</h2>
 <table class="table table-striped">
     <tr>
         <th>STT</th>

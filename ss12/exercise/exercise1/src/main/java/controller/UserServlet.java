@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "UserServlet",urlPatterns = "/user")
+@WebServlet(name = "UserServlet", urlPatterns = "/user")
 public class UserServlet extends HttpServlet {
     IUserService userService = new UserService();
 
@@ -32,7 +33,28 @@ public class UserServlet extends HttpServlet {
             case "delete":
                 deleteUser(request, response);
                 break;
+            case "search":
+                searchByName(request, response);
+                break;
 
+        }
+    }
+
+    private void searchByName(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<User> userList = userService.findUserByName(name);
+        request.setAttribute("userList", userList);
+        String mess = "";
+        if (userList.size() == 0) {
+            mess = "Không tìm thấy";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("view/listUser.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

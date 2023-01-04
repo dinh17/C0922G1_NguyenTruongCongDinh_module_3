@@ -28,4 +28,9 @@ public class UserService implements IUserService {
     public boolean addUser(User user) {
         return userRepository.addUser(user);
     }
+
+    @Override
+    public List<User> findUserByName(String name) {
+        return userRepository.findUserByName(name);
+    }
 }

@@ -20,6 +20,7 @@ public class UserRepository implements IUserRepository {
     private final String DELETE_USER = "delete from users where id = ?;";
     private final String SQL_SAFE_UPDATES = "set sql_safe_updates = 0;";
     private final String FOREIGN_KEY_CHECKS = "set foreign_key_checks = 0;";
+    private final String FIND_USER_BY_NAME = "select * from users  where `name` like  ? ";
 
     @Override
     public List<User> findAll() {
@@ -90,5 +91,26 @@ public class UserRepository implements IUserRepository {
 
 
         return false;
+    }
+
+    @Override
+    public List<User> findUserByName(String name) {
+        Connection connection = baseRepository.getConnection();
+        List<User> userList = new ArrayList<>();
+        try {
+            PreparedStatement ps =connection.prepareStatement(FIND_USER_BY_NAME);
+            ps.setString(1,"%"+name+"%");
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name1 = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                userList.add(new User(id, name1, email, country));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return userList;
     }
 }
