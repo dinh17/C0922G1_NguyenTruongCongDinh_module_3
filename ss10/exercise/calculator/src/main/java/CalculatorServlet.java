@@ -39,7 +39,6 @@ public class CalculatorServlet extends HttpServlet {
                     request.setAttribute("result", e.getMessage());
                     request.getRequestDispatcher("result.jsp").forward(request, response);
                 }
-                break;
         }
         finalResult = num1 + "" + operator + num2 + "=" + result;
         request.setAttribute("result", finalResult);
