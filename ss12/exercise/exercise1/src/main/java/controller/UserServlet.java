@@ -4,6 +4,7 @@ import model.User;
 import service.IUserService;
 import service.impl.UserService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,15 +35,31 @@ public class UserServlet extends HttpServlet {
                 deleteUser(request, response);
                 break;
             case "search":
-                searchByName(request, response);
+                searchByCountry(request, response);
+                break;
+            case "sort":
+                sortByName(request,response);
                 break;
 
         }
     }
 
-    private void searchByName(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        List<User> userList = userService.findUserByName(name);
+    private void sortByName(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList = userService.sortByName();
+        request.setAttribute("userList", userList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/listUser.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
+        String country = request.getParameter("country");
+        List<User> userList = userService.findUserByCountry(country);
         request.setAttribute("userList", userList);
         String mess = "";
         if (userList.size() == 0) {

@@ -25,9 +25,13 @@
 </head>
 <body>
 <form class="d-flex" action="/user?action=search" method="post">
-    <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search" name="name">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <input class="form-control me-2" type="search" placeholder="Search country" aria-label="Country" name="country">
+    <button class="btn btn-outline-success" type="submit">Search </button>
 </form>
+<form class="d-flex" action="/user?action=sort" method="post">
+    <button class="btn btn-outline-danger" type="submit">Sort by name</button>
+</form>
+
 <h1>User Management</h1>
 <h2><a href="/user?action=add">Add New User</a></h2>
 <h2><a href="/user">List Of User</a>  </h2>

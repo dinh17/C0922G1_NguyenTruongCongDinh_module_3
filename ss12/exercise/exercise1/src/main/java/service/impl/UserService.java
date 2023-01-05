@@ -30,7 +30,14 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> findUserByName(String name) {
-        return userRepository.findUserByName(name);
+    public List<User> findUserByCountry(String country) {
+        return userRepository.findUserByCountry(country);
     }
+
+    @Override
+    public List<User> sortByName() {
+        return userRepository.sortByName();
+    }
+
+
 }
