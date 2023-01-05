@@ -1,45 +1,37 @@
 package service.impl;
 
-
 import model.User;
 import repository.IUserRepository;
 import repository.impl.UserRepository;
 import service.IUserService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserService implements IUserService {
-
-
-    IUserRepository userRepository = new UserRepository();
+    private IUserRepository userRepository = new UserRepository();
     @Override
-    public void insertUser(User user) throws SQLException {
-        userRepository.insertUser(user);
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override
-    public User selectUser(int id) {
-        return userRepository.selectUser(id);
+    public List<User> findByCountry(String country) {
+        return userRepository.findByCountry(country);
+    }
+
+
+    @Override
+    public boolean add(User user) {
+        return userRepository.add(user);
     }
 
     @Override
-    public List<User> selectAllUsers() {
-        return userRepository.selectAllUsers();
+    public boolean delete(int id) {
+        return userRepository.delete(id);
     }
 
     @Override
-    public boolean deleteUser(int id) throws SQLException {
-        return userRepository.deleteUser(id);
-    }
-
-    @Override
-    public boolean updateUser(User user) throws SQLException {
-        return userRepository.updateUser(user);
-    }
-
-    @Override
-    public List<User> searchUsersByCountry(String country) {
-        return userRepository.searchUsersByCountry(country);
+    public boolean update(User user) {
+        return userRepository.update(user);
     }
 }

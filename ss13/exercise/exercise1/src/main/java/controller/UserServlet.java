@@ -1,143 +1,150 @@
 package controller;
 
-
 import model.User;
-import sevices.IUserService;
-import sevices.impl.UserService;
+import service.IUserService;
+import service.impl.UserService;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
+import java.io.*;
 import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
-@WebServlet(name = "UserServlet", urlPatterns = "/users")
+@WebServlet(name = "helloServlet", value = "/user")
 public class UserServlet extends HttpServlet {
-    private IUserService userServiceImpl;
+    private IUserService userService = new UserService();
 
-    public void init() {
-        userServiceImpl = new UserServiceImpl();
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
+        String action = req.getParameter("action");
         if (action == null) {
             action = "";
         }
-        try {
-            switch (action) {
-                case "create":
-                    insertUser(request, response);
-                    break;
-                case "edit":
-                    updateUser(request, response);
-                    break;
-                case "search":
-                    searchForCountry(request,response);
-                    break;
-            }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
+        switch (action) {
+            case "add":
+                add(req, resp);
+                break;
+            case "delete":
+                delete(req, resp);
+                break;
+            case "update":
+                update(req, resp);
+                break;
+            case "find":
+                findCountry(req, resp);
+                break;
+            default:
+                showList(req, resp);
+                break;
+
         }
     }
 
-    private void searchForCountry(HttpServletRequest request, HttpServletResponse response) {
-        String country = request.getParameter("country");
-        List<User> listUser = userServiceImpl.searchUsersByCountry(country);
-        request.setAttribute("listUser",listUser);
-        try {
-            request.getRequestDispatcher("view/list.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+        String action = req.getParameter("action");
         if (action == null) {
             action = "";
         }
-        try {
-            switch (action) {
-                case "create":
-                    showNewForm(request, response);
-                    break;
-                case "edit":
-                    showEditForm(request, response);
-                    break;
-                case "delete":
-                    deleteUser(request, response);
-                    break;
-                default:
-                    listUser(request, response);
-                    break;
-            }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
+        switch (action) {
+            case "add":
+                showListAdd(req, resp);
+                break;
+            case "update":
+                showListUpdate(req, resp);
+                break;
+            case "find":
+                showFindCountry(req, resp);
+                break;
+            default:
+                showList(req, resp);
+                break;
+
         }
     }
 
-    private void   listUser(HttpServletRequest request, HttpServletResponse response)
-            throws  IOException, ServletException {
-        List<User> listUser = userServiceImpl.selectAllUsers();
-        request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
-        dispatcher.forward(request, response);
+    private void showListUpdate(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        try {
+            req.setAttribute("id", id);
+            req.getRequestDispatcher("view/update.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
-        dispatcher.forward(request, response);
+    private void showListAdd(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            req.getRequestDispatcher("view/add.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-            throws  ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        User existingUser = userServiceImpl.selectUser(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
-        request.setAttribute("user", existingUser);
-        dispatcher.forward(request, response);
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String country = req.getParameter("country");
+        User user = new User(id, name, email, country);
+        userService.update(user);
+        showList(req, resp);
     }
 
-    private void insertUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String country = request.getParameter("country");
-        User newUser = new User(name, email, country);
-        userServiceImpl.insertUser(newUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
-        dispatcher.forward(request, response);
+    private void delete(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        boolean check = userService.delete(id);
+        String mess = " Delete success";
+        if (!check) {
+            mess = "Not Delete success";
+        }
+        req.setAttribute("mess", mess);
+        showList(req, resp);
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String country = request.getParameter("country");
 
-        User book = new User(id, name, email, country);
-        userServiceImpl.updateUser(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
-        dispatcher.forward(request, response);
+    private void add(HttpServletRequest req, HttpServletResponse resp) {
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String country = req.getParameter("country");
+        User user = new User(name, email, country);
+        boolean check = userService.add(user);
+        String mess = "Add new success";
+        if(!check){
+            mess ="Not Add new success";
+        }
+        req.setAttribute("mess", mess);
+        showList(req, resp);
     }
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        userServiceImpl.deleteUser(id);
+    private void showList(HttpServletRequest req, HttpServletResponse resp) {
+        List<User> userList = userService.findAll();
+        req.setAttribute("userList", userList);
+        try {
+            req.getRequestDispatcher("view/list.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void findCountry(HttpServletRequest req, HttpServletResponse resp) {
+        String country = req.getParameter("country");
+        req.setAttribute("user", userService.findByCountry(country));
+        showFindCountry(req, resp);
+    }
+    private void showFindCountry(HttpServletRequest req, HttpServletResponse resp) {
+        String country = req.getParameter("country");
+        List<User> userList = userService.findByCountry(country);
+        req.setAttribute("userList", userList);
+        try {
+            req.getRequestDispatcher("view/find.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        List<User> listUser = userServiceImpl.selectAllUsers();
-        request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
-        dispatcher.forward(request, response);
     }
 }

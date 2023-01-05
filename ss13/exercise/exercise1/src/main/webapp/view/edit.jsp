@@ -1,59 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User Management Application</title>
+    <title>UPDATE USERS</title>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous">
 <body>
-<center>
-    <h1>User Management</h1>
-    <h2>
-        <a href="users?action=users">List All Users</a>
-    </h2>
-</center>
-<div align="center">
-    <form method="post">
-        <table border="1" cellpadding="5">
-            <caption>
-                <h2>
-                    Edit User
-                </h2>
-            </caption>
-            <c:if test="${user != null}">
-                <input type="hidden" name="id" value="<c:out value='${user.id}' />"/>
-            </c:if>
-            <tr>
-                <th>User Name:</th>
-                <td>
-                    <input type="text" name="name" size="45"
-                           value="<c:out value='${user.name}' />"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <th>User Email:</th>
-                <td>
-                    <input type="text" name="email" size="45"
-                           value="<c:out value='${user.email}' />"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <th>Country:</th>
-                <td>
-                    <input type="text" name="country" size="15"
-                           value="<c:out value='${user.country}' />"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+<form action="/user?action=update" method="post">
+    <h4>Update User</h4>
+    <a class="btn btn-outline-primary" href="/user">List Users</a><br>
+    ID: <input type="text" name="id" value="${id}" readonly>
+    Name: <input type="text" name="name" placeholder="Input name">
+    Email: <input type="text" name="email" placeholder="Input email" >
+    Country: <input type="text" name="country" placeholder="Input country" >
+    <button class="btn btn-outline-secondary" type="submit">Update</button>
+</form>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </html>
