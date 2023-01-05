@@ -1,11 +1,11 @@
 package controller;
 
-import service.IFacilityService;
-import service.IFacilityTypeService;
-import service.IRentTypeService;
-import service.impl.FacilityService.FacilityService;
-import service.impl.FacilityService.FacilityTypeService;
-import service.impl.FacilityService.RentTypeService;
+import service.FacilityService.IFacilityService;
+import service.FacilityService.IFacilityTypeService;
+import service.FacilityService.IRentTypeService;
+import service.FacilityService.impl.FacilityService;
+import service.FacilityService.impl.FacilityTypeService;
+import service.FacilityService.impl.RentTypeService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

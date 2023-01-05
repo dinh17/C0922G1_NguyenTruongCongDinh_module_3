@@ -116,48 +116,13 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public List<User> sortByName() {
-//        // using try-with-resources to avoid closing resources (boiler plate code)
-//        List<User> users = new ArrayList<>();
-//        // Step 1: Establishing a Connection
-//        Connection connection = baseRepository.getConnection();
-//
-//        // Step 2:Create a statement using connection object
-//        PreparedStatement preparedStatement = null;
-//        try {
-//            preparedStatement = connection.prepareStatement(SORT_BY_NAME);
-//            System.out.println(preparedStatement);
-//            // Step 3: Execute the query or update query
-//            ResultSet rs = preparedStatement.executeQuery();
-//
-//            // Step 4: Process the ResultSet object.
-//            while (rs.next()) {
-//                int id = rs.getInt("id");
-//                String name = rs.getString("name");
-//                String email = rs.getString("email");
-//                String country = rs.getString("country");
-//                users.add(new User(id, name, email, country));
-//            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        {
-//
-//            return users;
-//        }
-        // using try-with-resources to avoid closing resources (boiler plate code)
         List<User> userList = new ArrayList<>();
-        // Step 1: Establishing a Connection
         Connection connection = baseRepository.getConnection();
 
-        // Step 2:Create a statement using connection object
-//        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement = null;
         try {
-             PreparedStatement preparedStatement = connection.prepareStatement(SORT_BY_NAME);
-//            System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
+            preparedStatement = connection.prepareStatement(SORT_BY_NAME);
             ResultSet rs = preparedStatement.executeQuery();
-
-            // Step 4: Process the ResultSet object.
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -168,9 +133,8 @@ public class UserRepository implements IUserRepository {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        {
+        return userList;
 
-            return userList;
-        }
     }
+
 }

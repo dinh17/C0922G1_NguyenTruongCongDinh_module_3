@@ -136,4 +136,7 @@ foreign key (username) references `user`(username)
 
 
 
+select e.*,d.name as division,ed.name as education_degree,p.name as position from employee e  join division d on e.division_id= d.id  join education_degree ed on ed.id=e.education_degree_id  join position p on p.id=e.position_id ;
 
+select e.* from employee e join division d on d.position_id= e.id;
+select * from education_degree
