@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/styleWeb.css">
 </head>
 <body>
-<h2 class="text-success">${mess}</h2>
-<h2 class="text-danger">${messDelete}</h2>
+<div>
+    <%--header--%>
+    <c:import url="/view/include/header.jsp"></c:import>
+</div>
+<%--<h2 class="text-success">${mess}</h2>--%>
+<%--<h2 class="text-danger">${messDelete}</h2>--%>
 <div class="row">
     <%--    thêm mới   --%>
     <div class="col-md-3">
         <div class="d-flex justify-content-center  align-content-center mt-3 ">
             <button class=" button  " style="width: 25% ; height: 50%">
-                <a href="<c:url value="/employee?action=add"/>" class="text-decoration-none  text-success">
+                <a class="text-decoration-none  text-success">
                     <img src="picture/3592854_add%20user_business%20man_employee_general_human_icon.png" height="100%"
                          width="90%"></a>
             </button>
@@ -33,7 +37,7 @@
     </div>
 </div>
 
-<table class="table table-striped " style="background: #c6c7c8" id="tableCustomer">
+<table class="table table-striped " style="background: #c6c7c8" id="tableEmployee">
     <thead>
     <tr class="bg-black text-white text-center">
         <th>STT</th>
@@ -53,10 +57,9 @@
     </tr>
     </thead>
     <tbody>
-
-    <c:forEach var="employee" items="${employeeList}" varStatus="status">
-        <tr class=" text-center ">
-            <td>${status.count}</td>
+    <c:forEach var="employee" items="${employeeList}" varStatus="stt">
+        <tr>
+            <td>${stt.count}</td>
             <td>${employee.name}</td>
             <td>${employee.dateOfBirth}</td>
             <td>${employee.idCard}</td>
@@ -69,22 +72,13 @@
             <td>${employee.educationDegree.name}</td>
 
             <td>
-                <button >
-                    <img src="picture/3592832_general_office_repair_repair%20tool_screwdriver_icon.png"
-                         height="25"
-                         width="20">
-                </button>
+              1
             </td>
             <td>
-                <button >
-                    <img src="../../picture/3592821_garbage%20can_general_office_recycle%20bin_rubbish%20bin_icon.png"
-                         height="25" width="20">
-                </button>
+                2
             </td>
-            </div>
         </tr>
     </c:forEach>
-
     </tbody>
 
 </table>
@@ -94,13 +88,13 @@
     <c:import url="/view/include/footer.jsp"></c:import>
 </div>
 
-<%--   Phân trang --%>
+<%--   Phân trang--%>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 <script style="align-content: center">
     $(document).ready(function () {
-        $('#tableCustomer').dataTable({
+        $('#tableEmployee').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 5
@@ -118,7 +112,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="/employee?action=delete" method="post">
+            <form action="" method="post">
                 <div class="modal-body">
                     <label for="deleteId"></label><input type="text" hidden id="deleteId" name="id">
                     Bạn có muốn xóa khách hàng <span id="deleteName" style="color: brown; font-weight: bold"></span>
@@ -139,7 +133,7 @@
 <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form action="/employee?action=edit" method="post" class="form-xl">
+            <form action="" method="post" class="form-xl">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Chỉnh sửa</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -150,9 +144,9 @@
                         <label class="col-sm-3 col-form-label">Customer Type Name</label>
                         <div class="col-sm-9">
                             <select class="form-select" name="customer_type_id" id="customerTypeId">
-                                <%--                                <c:forEach var="ct" items="${customerTypeList}">--%>
-                                <%--                                    <option value="${ct.id}">${ct.name}</option>--%>
-                                <%--                                </c:forEach>--%>
+                                                                <c:forEach var="ct" items="${customerTypeList}">
+                                                                    <option value="${ct.id}">${ct.name}</option>
+                                                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -215,30 +209,30 @@
     </div>
 </div>
 
-<%--<script>--%>
-<%--    function infoDelete(id, name) {--%>
-<%--        document.getElementById("deleteId").value = id;--%>
-<%--        document.getElementById("deleteName").innerText = name;--%>
-<%--    }--%>
-
-<%--    function infoEdit(id, customer_type_id, name, date_of_birth, id_card, phone_number, email, address, gender) {--%>
-<%--        document.getElementById("idEdit").value = id;--%>
-<%--        document.getElementById("customerTypeId").value = customer_type_id;--%>
-<%--        document.getElementById("nameEdit").value = name;--%>
-<%--        document.getElementById("dateEdit").value = date_of_birth;--%>
-<%--        document.getElementById("idCardEdit").value = id_card;--%>
-<%--        document.getElementById("phoneNumberEdit").value = phone_number;--%>
-<%--        document.getElementById("emailEdit").value = email;--%>
-<%--        document.getElementById("addressEdit").value = address;--%>
-<%--        if (gender === "true") {--%>
-<%--            document.getElementById("male").checked = true;--%>
-<%--            document.getElementById("female").checked = false;--%>
-<%--        } else {--%>
-<%--            document.getElementById("male").checked = false;--%>
-<%--            document.getElementById("female").checked = true;--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
+<script>
+    // function infoDelete(id, name) {
+    //     document.getElementById("deleteId").value = id;
+    //     document.getElementById("deleteName").innerText = name;
+    // }
+    //
+    // function infoEdit(id, customer_type_id, name, date_of_birth, id_card, phone_number, email, address, gender) {
+    //     document.getElementById("idEdit").value = id;
+    //     document.getElementById("customerTypeId").value = customer_type_id;
+    //     document.getElementById("nameEdit").value = name;
+    //     document.getElementById("dateEdit").value = date_of_birth;
+    //     document.getElementById("idCardEdit").value = id_card;
+    //     document.getElementById("phoneNumberEdit").value = phone_number;
+    //     document.getElementById("emailEdit").value = email;
+    //     document.getElementById("addressEdit").value = address;
+    //     if (gender === "true") {
+    //         document.getElementById("male").checked = true;
+    //         document.getElementById("female").checked = false;
+    //     } else {
+    //         document.getElementById("male").checked = false;
+    //         document.getElementById("female").checked = true;
+    //     }
+    // }
+</script>
 
 <%-- file  bootstrap javascript--%>
 <script src="../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>

@@ -47,10 +47,11 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void displayEmployee(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("employeeList ", employeeService.displayEmployee());
+
         request.setAttribute("divisionList",divisionService.findAllDivision());
         request.setAttribute("positionList",positionService.findAllPosition());
         request.setAttribute("educationDegreeList",educationDegreeService.findAllEducationDegree());
+        request.setAttribute("employeeList", employeeService.displayEmployee());
 
         try {
             request.getRequestDispatcher("/view/employee/listEmployee.jsp").forward(request, response);
