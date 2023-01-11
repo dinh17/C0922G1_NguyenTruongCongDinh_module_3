@@ -10,4 +10,5 @@ public interface IFacilityService {
     Boolean addFacility (Facility facility);
     boolean deleteFacility (int id);
     boolean editFacility (Facility facility);
+    List<Facility> findFacility(String facilityName, int rentTypeID);
 }

@@ -48,10 +48,15 @@ public class CustomerServlet extends HttpServlet {
 
     private void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String address = request.getParameter("address");
-        List<Customer> customerList = customerService.findCustomerByName(name,phoneNumber,address);
+        String phoneNumber = request.getParameter("phone_number");
+        String customerType = request.getParameter("customer_type_id");
+
+//        String address = request.getParameter("address");
+        List<Customer> customerList = customerService.findCustomerByName(name,phoneNumber,customerType);
         request.setAttribute("customerList", customerList);
+       List<CustomerType> customerTypeList = customerTypeService.findAllCustomerType();
+       request.setAttribute("customerTypeList",customerTypeList);
+
         String mess = "";
         if (customerList.size() == 0) {
             mess = "Không tìm thấy";

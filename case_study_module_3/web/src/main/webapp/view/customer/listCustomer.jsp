@@ -21,16 +21,40 @@
     <%--header--%>
     <c:import url="/view/include/header.jsp"></c:import>
 </div>
+
+<%--search--%>
 <form class="d-flex" action="/customer?action=search" method="post">
     <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search" name="name">
     <input class="form-control me-2" type="search" placeholder="Search Phone Number" aria-label="Search"
            name="phone_number">
-    <input class="form-control me-2" type="search" placeholder="Search Address" aria-label="Search" name="address">
+        <select name="customer_type_id">
+            <option value="">Chọn loai khach </option>
+            <c:forEach var="customerType" items="${customerTypeList}">
+                <option value="${customerType.id}">${customerType.name}</option>
+            </c:forEach>
+        </select>
+<%--    <input class="form-control me-2" type="search" placeholder="Search Address" aria-label="Search" name="address">--%>
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
+
+<%--<form action="/student?action=search" method="post">--%>
+<%--    <input name="searchName" placeholder="nhập tên">--%>
+<%--    <select name="searchClassId">--%>
+<%--        <option value="">Chọn lớp</option>--%>
+<%--        <c:forEach var="clazz" items="${clazzList}">--%>
+<%--            <option value="${clazz.id}">${clazz.name}</option>--%>
+<%--        </c:forEach>--%>
+<%--    </select>--%>
+
+
+<%--    <button type="submit">Search</button>--%>
+<%--</form>--%>
+
 <%-- mess --%>
 <h2 class="text-success">${mess}</h2>
 <h2 class="text-danger">${messDelete}</h2>
+
+<%--thêm--%>
 <div class="row">
     <div class="col-md-3">
         <div class="d-flex justify-content-center  align-content-center mt-3 ">
@@ -50,7 +74,7 @@
 
     </div>
 </div>
-
+<%--danh sách--%>
 <table class="table table-striped " style="background: #c6c7c8" id="tableCustomer">
     <thead>
     <tr class="bg-black text-white text-center">

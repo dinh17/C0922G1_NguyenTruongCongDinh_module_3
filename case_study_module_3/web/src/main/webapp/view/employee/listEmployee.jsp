@@ -72,10 +72,12 @@
             <td>${employee.educationDegree.name}</td>
 
             <td>
-              1
+                <img src="picture/3592832_general_office_repair_repair%20tool_screwdriver_icon.png"
+                     height="25"
+                     width="20">
             </td>
             <td>
-                2
+                Delete
             </td>
         </tr>
     </c:forEach>
@@ -215,7 +217,8 @@
     //     document.getElementById("deleteName").innerText = name;
     // }
     //
-    // function infoEdit(id, customer_type_id, name, date_of_birth, id_card, phone_number, email, address, gender) {
+    // function infoEdit(id) {
+    //
     //     document.getElementById("idEdit").value = id;
     //     document.getElementById("customerTypeId").value = customer_type_id;
     //     document.getElementById("nameEdit").value = name;
@@ -224,13 +227,6 @@
     //     document.getElementById("phoneNumberEdit").value = phone_number;
     //     document.getElementById("emailEdit").value = email;
     //     document.getElementById("addressEdit").value = address;
-    //     if (gender === "true") {
-    //         document.getElementById("male").checked = true;
-    //         document.getElementById("female").checked = false;
-    //     } else {
-    //         document.getElementById("male").checked = false;
-    //         document.getElementById("female").checked = true;
-    //     }
     // }
 </script>
 

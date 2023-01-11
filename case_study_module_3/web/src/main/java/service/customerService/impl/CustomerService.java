@@ -30,8 +30,8 @@ public class CustomerService  implements ICustomerService {
     }
 
     @Override
-    public List<Customer> findCustomerByName(String customerName, String customerPhoneNumber, String customerAddress) {
-        return customerRepository.findCustomerByName(customerName,customerPhoneNumber,customerAddress);
+    public List<Customer> findCustomerByName(String customerName, String customerPhoneNumber, String customerType) {
+        return customerRepository.findCustomerByName(customerName,customerPhoneNumber,customerType);
     }
 
 

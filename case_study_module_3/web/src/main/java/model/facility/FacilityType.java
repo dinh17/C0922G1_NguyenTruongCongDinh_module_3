@@ -12,6 +12,10 @@ public class FacilityType {
         this.name = name;
     }
 
+    public FacilityType(int facilityTypeId) {
+        this.id = facilityTypeId;
+    }
+
     public int getId() {
         return id;
     }

@@ -45,7 +45,7 @@
         <div class="m-2 row">
             <label for="staticName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticName"  required   title="Tên Hợp Lệ  : VD (Nguyễn Trương Công Định),..." name="name">
+                <input type="text" class="form-control" id="staticName"  required   pattern="^[A-Z][a-z]*(\s[A-Z][a-z]*)+$" title="Tên Hợp Lệ  : VD (Nguyen Truong Cong Dinh),..." name="name">
             </div>
         </div>
 
@@ -80,14 +80,14 @@
         <div class="m-2 row">
             <label for="staticPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticPhoneNumber" required name="phone_number">
+                <input type="text" class="form-control" id="staticPhoneNumber" required pattern="^[+]?[(]?[1-9]{2}[)]?[-]+[0-9]{9}$" title="VD: 84-123456789" name="phone_number">
             </div>
         </div>
     <%--        email       --%>
         <div class="m-2 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="staticEmail" required name="email">
+                <input type="email" class="form-control" id="staticEmail" required pattern="[\w]+@+[a-zA-z]{1,5}\.+[a-zA-Z]{2,4}"  title="VD : dinh1thong@gmail.com" name="email">
             </div>
         </div>
     <%--         address   --%>

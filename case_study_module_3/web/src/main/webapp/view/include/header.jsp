@@ -89,7 +89,7 @@
                             <a class="nav-link active" href="/employee">Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Contract</a>
+                            <a class="nav-link active" href="/contract">Contract</a>
                         </li>
                     </ul>
                 </div>

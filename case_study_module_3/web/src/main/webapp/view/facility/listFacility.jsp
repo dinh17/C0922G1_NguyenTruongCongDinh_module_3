@@ -53,13 +53,13 @@
                     <div class="m-2 row">
                         <label class="col-sm-3 col-form-label">Cost</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="costAdd" name="cost">
+                            <input type="number" class="form-control" id="costAdd" name="cost">
                         </div>
                     </div>
                     <div class="m-2 row">
                         <label class="col-sm-3 col-form-label">Max People</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="maxPeopleAdd" name="max_people">
+                            <input type="number" class="form-control" id="maxPeopleAdd" name="max_people">
                         </div>
                     </div>
                     <div class="m-2 row">
@@ -76,7 +76,7 @@
                         <div class="m-2 row">
                             <label class="col-sm-3 col-form-label">Standard Room</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="standard_room">
+                                <input type="number" class="form-control" name="standard_room">
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                     <div class="m-2 row">
                         <label for="maxPeopleEdit" class="col-sm-3 col-form-label">Max People</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="maxPeopleEdit" name="max_people">
+                            <input type="number" class="form-control" id="maxPeopleEdit" name="max_people">
                         </div>
                     </div>
                     <div class="m-2 row">

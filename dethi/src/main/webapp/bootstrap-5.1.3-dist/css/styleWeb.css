@@ -1,0 +1,181 @@
+/*button,*/
+/*button::after {*/
+/*    padding: 16px 20px;*/
+/*    font-size: 25px;*/
+/*    background: linear-gradient(45deg, transparent 5%, #6610f2 5%);*/
+/*    border: 0;*/
+/*    color: #fff;*/
+/*    letter-spacing: 3px;*/
+/*    line-height: 1;*/
+/*    box-shadow: 6px 0px 0px #1a1e21;*/
+/*    outline: transparent;*/
+/*    position: relative;*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+/*   button add */
+.button {
+    --color: #00A97F;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+}
+
+.button::before, .button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button:hover::before, .button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: rgb(10, 25, 30);
+}
+
+.button:active {
+    filter: brightness(.8);
+}
+
+
+
+/*   button xoa */
+
+.button1 {
+
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: rgb(255,0,0);
+    z-index: 1;
+}
+
+.button1::before, .button1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color:  rgb(255,0,0);
+    transition: 1s ease;
+}
+
+.button1::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button1::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button1:hover::before, .button1:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button1:hover {
+    color: rgb(10, 25, 30);
+}
+
+.button1 :active {
+    filter: brightness(.8);
+}
+/*   button edit */
+.button2 {
+    --color1: #00A9;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color1);
+    z-index: 1;
+}
+
+.button2::before, .button2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color1);
+    transition: 1s ease;
+}
+
+.button2::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button2::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button2:hover::before, .button2:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button2:hover {
+    color: rgb(10, 25, 30);
+}
+
+.button2:active {
+    filter: brightness(.8);
+}
+

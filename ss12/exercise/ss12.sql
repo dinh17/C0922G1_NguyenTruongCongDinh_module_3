@@ -15,3 +15,6 @@ select * from users;
 set sql_safe_updates = 0;
 set foreign_key_checks = 0;
 update users set `name`='dinh',email='kcogi',country='viet' where id = 1
+
+insert into student( name, gender , age, number_phone,class_id,student_type_id )\n" +
+            " values (?,?,?,?,?,?);
